@@ -36,7 +36,6 @@ const app = new Vue({
   created: function() {
    },  
    beforeMount() {
-     console.log('breforeMount')
     this.dataTraducirEN()
     this.dataTraducirES()
 
@@ -47,13 +46,12 @@ const app = new Vue({
    },
   methods:{
     loadDataI18n() {
-      console.log('breforeMount')
       var messages = {
         'es': this.getLanguageFomrLocalStorage("traducES"),
         'en': this.getLanguageFomrLocalStorage("traducEN")
       }
       i18n = new VueI18n({
-        locale: 'es', // set locale
+        locale: 'en', // set locale
         messages, // set locale messages        
       })
     },
@@ -62,21 +60,13 @@ const app = new Vue({
         data: JSON.parse(localStorage.getItem(language))
       }
     },
-    // blockProccessWhileUnresolvePromise(promise, sleep) {
-    //   while (!localStorage.getItem("traducEN")) {
-    //     console.log('Es mi LocalStorage', localStorage.getItem("traducEN"))
-    //     setTimeout(function(){ console.log(time)}, 3000);
-
-    //   }
-    // },
-
     dataTraducirEN(){
       let slef = this
       return new Promise (function(resolve,reject){      
       axios.post('http://localhost:8000/api/ServiceTraduction/JsonTraducciones',{'idioma':'2'})
       .then(response => { slef.datajson = JSON.stringify(response.data)
           //alert(slef.datajson )
-          if(slef.datajson =! ''){
+          if(slef.datajson =! ''){            
             localStorage.setItem("traducEN", JSON.stringify(response.data))
             console.log('entro ok')
             resolve(slef.datajson)
