@@ -1,31 +1,20 @@
 <template>
-<div>
-  <b-card class="text-center" title="Internacionalizacion" v-if="status">
-    <b-nav tabs justified>
-      <b-nav-item active>{{ $t("tip_bancoX") }}</b-nav-item>
-      <b-nav-item>{{ $t('tip_cod_est_fac_elec_gs_co999998')}}</b-nav-item>
-      <b-nav-item>{{ $t('ACTIVIDADES_DE_INTEGRACION')}}</b-nav-item>
-      <b-nav-item>{{ $t('btn_liquidar')}}</b-nav-item>
-      <b-nav-item>{{ $t('lbl_seleccion')}}</b-nav-item>
-      <b-nav-item>
-        <b-form-select v-model="$i18n.locale">
-          <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
-        </b-form-select>
-      </b-nav-item>     
-    </b-nav>
-  </b-card>
-  <b-card class="text-center" title="Cargando" v-else>
-    {{statusStorage}}
-  </b-card>
-</div>
-</template>
- 
+ <div id="app">
+    <navbar />
+    <main class="container" role="main">   
+    </main>
+  </div>
+</template> 
 <script>
+import Navbar from './components/nav'
+
 export default {
   name: "App",
+  components: {
+        navbar: Navbar,
+  },
   created: function() {},
   beforeMount() {
-    console.log(this.statusStorage)
     setTimeout(this.consultStorage, 1000);
   },
   data() {
