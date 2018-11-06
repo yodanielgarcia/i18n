@@ -12,6 +12,11 @@ Vue.use(VueI18n)
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios)
 Vue.prototype.$axios = axios
+
+var config = {
+  headers: { 'Content-Type': 'application/json' }
+};
+
 // Ready translated locale messages
 var messages = {};
 // Create VueI18n instance with options
@@ -59,7 +64,7 @@ const app = new Vue({
     dataTraducirEN() {
       let slef = this
       return new Promise(function (resolve, reject) {
-        axios.post('http://localhost:8000/api/ServiceTraduction/JsonTraducciones', { 'idioma': '2' })
+        axios.post('http://localhost:8000/serviceTraduccion', { "idioma": 2 })
           .then(response => {
           slef.datajson = JSON.stringify(response.data)
             if (slef.datajson = ! '') {
@@ -75,7 +80,7 @@ const app = new Vue({
       })
     },
     dataTraducirES() {
-      axios.post('http://localhost:8000/api/ServiceTraduction/JsonTraducciones', { 'idioma': '1' })
+      axios.post('http://localhost:8000/serviceTraduccion', { 'idioma': '1' })
         .then(response => {
         this.datajson = JSON.stringify(response.data)
           localStorage.setItem("traducES", this.datajson)

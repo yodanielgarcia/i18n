@@ -2,7 +2,7 @@
 <div>
   <b-card class="text-center" title="Internacionalizacion" v-if="LoadingTrue">
     <b-nav tabs justified>
-      <b-nav-item href="#"active>{{ $t("tip_bancoX") }}</b-nav-item>
+      <b-nav-item href="#" active>{{ $t("tip_hodeline") }}</b-nav-item>
       <b-nav-item href="#">{{ $t('tip_cod_est_fac_elec_gs_co999998')}}</b-nav-item>
       <b-nav-item href="#">{{ $t('ACTIVIDADES_DE_INTEGRACION')}}</b-nav-item>
       <b-nav-item href="#">{{ $t('btn_liquidar')}}</b-nav-item>
