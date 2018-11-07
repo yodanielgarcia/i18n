@@ -13,7 +13,7 @@
         </b-form-group>
       </b-col>
     </b-row>
-    <b-table show-empty stacked="md" :items="this.DataItems" :fields="this.DataFields" :current-page="currentPage" :per-page="perPage" :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :sort-direction="sortDirection" @filtered="onFiltered">
+    <b-table striped hover show-empty stacked="md" :items="this.DataItems" :fields="this.DataFields" :current-page="currentPage" :per-page="perPage" :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :sort-direction="sortDirection" @filtered="onFiltered">
     </b-table>
     <b-row>
       <b-col md="6" class="my-1">
@@ -41,7 +41,7 @@ export default {
     return {
       currentData: {},
       currentPage: 1,
-      perPage: 10,
+      perPage: 5,
       pageOptions: [5, 10, 15],
       sortBy: null,
       sortDesc: false,
@@ -60,20 +60,7 @@ export default {
     }
   },
   mounted () {
-    this.DataItems = [{ isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald', address:  'New York' },
-        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  }]
+    this.DataItems = this.items
     this.DataFields = this.fields
     //this.DataMethodsTable = this.methodsTable
     //this.validateButton()

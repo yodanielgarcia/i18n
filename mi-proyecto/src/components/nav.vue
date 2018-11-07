@@ -13,9 +13,18 @@
         </b-form-select>
       </b-nav-item>     
     </b-nav>
-    <datetime type="datetime" v-model="datetime"></datetime>
+    <b-row>      
+    <b-col md=3>
+      <label for="Fecha">Fecha</label>
+      <datetime type="datetime" v-model="datetime"></datetime>
+    </b-col>
+    <b-col md=3>
+      <br>
+      <b-button v-on:click="showAlert">Alert Sweet</b-button>
+    </b-col>
+    </b-row>
   <b-card>
-    <tableC />
+    <tableC :items="this.items" :fields="this.fields" />
   </b-card>
   </b-card>
   <b-card class="text-center" title="Cargando" v-else>
@@ -24,29 +33,73 @@
 </div>
 </template> 
 <script>
-import Table from './Table'
+import Table from "./Table";
 
 export default {
-  name: "AppNAV",  
+  name: "AppNAV",
   components: {
-        tableC: Table
+    tableC: Table
   },
-   beforeMount() {
-    setTimeout(this.Loading, 1000)
+  beforeMount() {
+    setTimeout(this.Loading, 1000);
+    this.showAlert()
   },
   data() {
     return {
       LoadingTrue: 0,
       datos: [],
-      langs: ["es", "en"]
-    }
+      langs: ["es", "en"],
+      datetime: "",
+      items: 
+       [{ isActive: true, age: 40, first_name: 'prueba', last_name: 'Macdonald', address:'New York' },
+        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
+        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
+        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
+        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
+        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
+        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
+        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
+        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
+        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
+        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
+        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
+        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
+        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  }],
+      fields : [
+        {
+          key: 'last_name',
+          sortable: true
+        },
+        {
+          key: 'first_name',
+          sortable: false
+        },
+        {
+          key: 'age',
+          label: 'Person age',
+          sortable: true,
+        },
+        {
+          key: 'address',
+          sortable: true
+        }
+      ]
+    };
   },
   methods: {
     Loading() {
-     this.LoadingTrue = 1
-  }  
-}
-}
+      this.LoadingTrue = 1;
+    },
+    showAlert(){
+        this.$swal({
+        type: 'success',
+        title: 'Cargando',
+        text: 'Cargando modulo de idiomas',
+        timer: 1500
+      })
+    }
+  }
+};
 </script>
 
 

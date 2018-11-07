@@ -5,6 +5,7 @@ import VueI18n from 'vue-i18n'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
 import Datetime from 'vue-datetime'
+import VueSweetalert2 from 'vue-sweetalert2';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,6 +15,7 @@ Vue.use(VueI18n)
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios)
 Vue.use(Datetime)
+Vue.use(VueSweetalert2);
 Vue.prototype.$axios = axios
 
 // Ready translated locale messages
