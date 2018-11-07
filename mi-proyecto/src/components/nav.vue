@@ -13,15 +13,24 @@
         </b-form-select>
       </b-nav-item>     
     </b-nav>
+    <datetime type="datetime" v-model="datetime"></datetime>
+  <b-card>
+    <tableC />
+  </b-card>
   </b-card>
   <b-card class="text-center" title="Cargando" v-else>
   </b-card>
+  
 </div>
-</template>
- 
+</template> 
 <script>
+import Table from './Table'
+
 export default {
-  name: "AppNAV",
+  name: "AppNAV",  
+  components: {
+        tableC: Table
+  },
    beforeMount() {
     setTimeout(this.Loading, 1000)
   },

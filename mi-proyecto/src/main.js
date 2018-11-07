@@ -4,18 +4,17 @@ import VueAxios from 'vue-axios'
 import VueI18n from 'vue-i18n'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
+import Datetime from 'vue-datetime'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vue-datetime/dist/vue-datetime.css'
 
 Vue.use(VueI18n)
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios)
+Vue.use(Datetime)
 Vue.prototype.$axios = axios
-
-var config = {
-  headers: { 'Content-Type': 'application/json' }
-};
 
 // Ready translated locale messages
 var messages = {};
