@@ -16,12 +16,19 @@
     <b-row>      
     <b-col md=3>
       <label for="Fecha">Fecha</label>
-      <datetime type="datetime" v-model="datetime"></datetime>
+      <b-form-input type="date" v-model="datetime"></b-form-input>
     </b-col>
     <b-col md=3>
-      <br>
       <b-button v-on:click="showAlert">Alert Sweet</b-button>
-    </b-col>
+    </b-col>  
+    <b-col md=3>
+    <b-alert variant="danger" dismissible :show="showDismissibleAlert" @dismissed="showDismissibleAlert=false">
+      Alert!!!!
+    </b-alert>
+    <b-btn variant="success" @click="enviarRVD" >
+     Alerta Bootstrap
+    </b-btn>
+    </b-col>  
     </b-row>
   <b-card>
     <tableC :items="this.items" :fields="this.fields" />
@@ -46,25 +53,14 @@ export default {
   },
   data() {
     return {
+      showDismissibleAlert: false,
       LoadingTrue: 0,
       datos: [],
       langs: ["es", "en"],
       datetime: "",
       items: 
        [{ isActive: true, age: 40, first_name: 'prueba', last_name: 'Macdonald', address:'New York' },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  },
-        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw', address:  'Toronto' },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson', address: 'Sydney'  }],
+        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  }],
       fields : [
         {
           key: 'last_name',
@@ -92,14 +88,26 @@ export default {
     },
     showAlert(){
         this.$swal({
-        type: 'success',
+        toast:true,
+        position: 'top-end',
+        type: 'warning',
         title: 'Cargando',
-        text: 'Cargando modulo de idiomas',
-        timer: 1500
+        text: 'Cargando modulo de idiomas'        
       })
+    },
+    enviarRVD() {
+      let array = {
+        fechaIniRVD: this.fechaIniRVD + " 00:00:00",
+        fechafinRVD: this.fechaFinRVD + " 23:59:00"
+      };
+      this.$store.dispatch("pagosReportsAll", array).then(Response => {        
+          this.List = this.$store.getters.pagosReports;
+          this.json_data = this.$store.getters.pagosReports.items;       
+      });
     }
   }
 };
+
 </script>
 
 
