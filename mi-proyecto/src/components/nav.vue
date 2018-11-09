@@ -31,7 +31,7 @@
     </b-col>  
     </b-row>
   <b-card>
-    <tableC :items="this.items" :fields="this.fields" />
+    <tableC :items="this.items" :fields="this.fields" v-if="mostrarTRVD"/>
   </b-card>
   </b-card>
   <b-card class="text-center" title="Cargando" v-else>
@@ -58,9 +58,8 @@ export default {
       datos: [],
       langs: ["es", "en"],
       datetime: "",
-      items: 
-       [{ isActive: true, age: 40, first_name: 'prueba', last_name: 'Macdonald', address:'New York' },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney', address:'London'  }],
+      mostrarTRVD: false,
+      items: [],
       fields : [
         {
           key: 'last_name',
@@ -69,15 +68,6 @@ export default {
         {
           key: 'first_name',
           sortable: false
-        },
-        {
-          key: 'age',
-          label: 'Person age',
-          sortable: true,
-        },
-        {
-          key: 'address',
-          sortable: true
         }
       ]
     };
@@ -101,8 +91,8 @@ export default {
         fechafinRVD: this.fechaFinRVD + " 23:59:00"
       };
       this.$store.dispatch("pagosReportsAll", array).then(Response => {        
-          this.List = this.$store.getters.pagosReports;
-          this.json_data = this.$store.getters.pagosReports.items;       
+          this.items = this.$store.getters.pagosReports;
+          this.mostrarTRVD = true
       });
     }
   }

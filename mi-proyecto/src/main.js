@@ -94,6 +94,6 @@ const app = new Vue({
     }
   }
 })
-new Vue(Vue.util.extend({ i18n, VueAxios, axios, app }, App)).$mount('#app');
+new Vue(Vue.util.extend({ i18n, VueAxios, axios, app, store }, App)).$mount('#app');
 i18n.locale = 'en'
 export default messages
