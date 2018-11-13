@@ -2,7 +2,7 @@
   <div v-if="!this.loading" class="animated fadeIn">
       <b-row>
         <b-col lg="12">
-          <tableDinamic :items="this.dataLoad" :fields="this.dataLoad" ></tableDinamic>
+          <tableDinamic :items="this.recarga.items" :fields="this.dataLoad.fields" ></tableDinamic>
         </b-col><!--/.col-->
       </b-row><!--/.row-->
   </div>
@@ -24,12 +24,7 @@ export default {
     return {
       loading: true,
       form: {},
-      dataLoad:[{
-        "key": "tipo_bancoX",
-        "label": "TipoBanco",
-        "sortable": true,
-        "sortDirection": "desc"
-      }]
+      dataLoad: {}
     }
   },
   watch:{
@@ -50,14 +45,9 @@ export default {
   mounted () {
     let self = this
     this.$store.dispatch(this.allDispatch).then((response) => {
-      self.dataLoad = [{
-        "key": "tipo_bancoX",
-        "label": "TipoBanco",
-        "sortable": true,
-        "sortDirection": "desc"
-      }]
-      ///self.$store.getters[self.mapState]
-      self.recarga =  self.$store.getters[self.mapState]
+      self.dataLoad = self.$store.getters
+      console.log('dada',self.dataLoad)
+      self.recarga =  self.$store.getters
       self.loading = false
     }).catch((error) => {
       // eslint-disable-next-line

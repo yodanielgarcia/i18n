@@ -17,7 +17,7 @@
     </b-table>
     <b-row>
       <b-col md="6" class="my-1">
-        <b-pagination :total-rows="this.DataItems.length" :per-page="perPage" v-model="currentPage" class="my-0" />
+        <!-- <b-pagination :total-rows="this.DataItems.length" :per-page="perPage" v-model="currentPage" class="my-0" /> -->
       </b-col>
       <b-col md="6" class="my-1">
         <b-form-group horizontal label="Registro por página" class="mb-0">
@@ -48,12 +48,7 @@ export default {
       filter: null,
       DataItemsVal: 0,
       DataItems: [],
-      DataFields: [{
-        "key": "tipo_bancoX",
-        "label": "TipoBanco",
-        "sortable": true,
-        "sortDirection": "desc"
-      }],
+      DataFields: {},
       DataMethodsTable: '',
       seen: false
     }
@@ -64,13 +59,9 @@ export default {
     }
   },
   mounted () {
+    console.log( this.items)
     this.DataItems = this.items
-    this.DataFields =[{
-        "key": "tipo_bancoX",
-        "label": "TipoBanco",
-        "sortable": true,
-        "sortDirection": "desc"
-      }]
+    this.DataFields = this.fields
     //this.DataMethodsTable = this.methodsTable
     //this.validateButton()
   },
