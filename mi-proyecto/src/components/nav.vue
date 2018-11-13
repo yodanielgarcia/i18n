@@ -25,8 +25,13 @@
     <b-alert variant="danger" dismissible :show="showDismissibleAlert" @dismissed="showDismissibleAlert=false">
       Alert!!!!
     </b-alert>
+    <b-btn @click="showDismissibleAlert=true" variant="info" class="m-1">
+      Alerta Bootstrap
+    </b-btn>
+    </b-col> 
+    <b-col md=3> 
     <b-btn variant="success" @click="enviarRVD" >
-     Alerta Bootstrap
+      Show table
     </b-btn>
     </b-col>  
     </b-row>
@@ -45,7 +50,7 @@ import List from './modules/base/list.vue'
 export default {
   name: "AppNAV",
   components: {
-    List: List
+    List
   },
   beforeMount() {
     setTimeout(this.Loading, 1000);
@@ -59,13 +64,6 @@ export default {
       langs: ["es", "en"],
       datetime: "",
       mostrarTRVD: false,
-      items: [],
-      fields : [
-        {
-          key: 'tip_bancoX',
-          sortable: true
-        },
-      ]
     };
   },
   methods: {
@@ -87,10 +85,10 @@ export default {
         fechafinRVD: this.fechaFinRVD + " 23:59:00"
       };
       let mostrarTRVD= ''
-      this.$store.dispatch("pagosReportsAll", array).then(Response => {        
-          this.items =this.$store.getters.pagosReports;
-          this.mostrarTRVD = true
-      });
+      // this.$store.dispatch("pagosReportsAll", array).then(Response => {      
+      // this.List= this.$store.getters.pagosReports 
+       this.mostrarTRVD = true
+      // });
     }
   }
 };

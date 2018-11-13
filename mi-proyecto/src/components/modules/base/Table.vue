@@ -48,7 +48,12 @@ export default {
       filter: null,
       DataItemsVal: 0,
       DataItems: [],
-      DataFields: {},
+      DataFields: [{
+        "key": "tipo_bancoX",
+        "label": "TipoBanco",
+        "sortable": true,
+        "sortDirection": "desc"
+      }],
       DataMethodsTable: '',
       seen: false
     }
@@ -59,9 +64,13 @@ export default {
     }
   },
   mounted () {
-    alert(this.fields)
     this.DataItems = this.items
-    this.DataFields = this.fields
+    this.DataFields =[{
+        "key": "tipo_bancoX",
+        "label": "TipoBanco",
+        "sortable": true,
+        "sortDirection": "desc"
+      }]
     //this.DataMethodsTable = this.methodsTable
     //this.validateButton()
   },

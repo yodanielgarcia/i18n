@@ -24,7 +24,12 @@ export default {
     return {
       loading: true,
       form: {},
-      dataLoad: {}
+      dataLoad:[{
+        "key": "tipo_bancoX",
+        "label": "TipoBanco",
+        "sortable": true,
+        "sortDirection": "desc"
+      }]
     }
   },
   watch:{
@@ -43,11 +48,17 @@ export default {
     }
   },
   mounted () {
+    let self = this
     this.$store.dispatch(this.allDispatch).then((response) => {
-      this.dataLoad = this.$store.getters[this.mapState]
-      alert(this.dataLoad)
-      this.recarga =  this.$store.getters[this.mapState]
-      this.loading = false
+      self.dataLoad = [{
+        "key": "tipo_bancoX",
+        "label": "TipoBanco",
+        "sortable": true,
+        "sortDirection": "desc"
+      }]
+      ///self.$store.getters[self.mapState]
+      self.recarga =  self.$store.getters[self.mapState]
+      self.loading = false
     }).catch((error) => {
       // eslint-disable-next-line
       console.error(error)
