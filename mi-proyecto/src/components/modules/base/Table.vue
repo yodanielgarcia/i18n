@@ -35,7 +35,6 @@ export default {
   props: {
     items: { required: false },
     fields: { required: false },
-    methodsTable: { required: false },
   },
   data () {
     return {
@@ -60,6 +59,7 @@ export default {
     }
   },
   mounted () {
+    alert(this.fields)
     this.DataItems = this.items
     this.DataFields = this.fields
     //this.DataMethodsTable = this.methodsTable
@@ -73,12 +73,6 @@ export default {
       this.totalRows = filteredItems.length
       this.currentPage = 1
     },
-    // validateButton () {
-    //   console.log(this.DataMethodsTable.length)
-    //   if (this.DataMethodsTable.length === 3) {
-    //     this.seen = true
-    //   }
-    // },
     actionButton (id, index) {
       let obj = {id: id}
       let json = JSON.stringify(obj)

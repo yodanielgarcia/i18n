@@ -31,7 +31,7 @@
     </b-col>  
     </b-row>
   <b-card>
-    <tableC :items="this.items" :fields="this.fields" v-if="mostrarTRVD"/>
+    <List :mapState="'pagosReports'" v-if="mostrarTRVD"  :allDispatch="'pagosReportsAll'"></List>
   </b-card>
   </b-card>
   <b-card class="text-center" title="Cargando" v-else>
@@ -40,12 +40,12 @@
 </div>
 </template> 
 <script>
-import Table from "./Table";
+import List from './modules/base/list.vue'
 
 export default {
   name: "AppNAV",
   components: {
-    tableC: Table
+    List: List
   },
   beforeMount() {
     setTimeout(this.Loading, 1000);
@@ -62,13 +62,9 @@ export default {
       items: [],
       fields : [
         {
-          key: 'last_name',
+          key: 'tip_bancoX',
           sortable: true
         },
-        {
-          key: 'first_name',
-          sortable: false
-        }
       ]
     };
   },
@@ -90,8 +86,9 @@ export default {
         fechaIniRVD: this.fechaIniRVD + " 00:00:00",
         fechafinRVD: this.fechaFinRVD + " 23:59:00"
       };
+      let mostrarTRVD= ''
       this.$store.dispatch("pagosReportsAll", array).then(Response => {        
-          this.items = this.$store.getters.pagosReports;
+          this.items =this.$store.getters.pagosReports;
           this.mostrarTRVD = true
       });
     }

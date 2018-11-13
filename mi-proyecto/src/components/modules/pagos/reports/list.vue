@@ -62,7 +62,7 @@ export default {
         fechaIniRVD: this.fechaIniRVD + " 00:00:00",
         fechafinRVD: this.fechaFinRVD + " 23:59:00"
       };
-      this.$store.dispatch("pagosReportsAll", array).then(Response => {        
+      this.$store.dispatch("pagosReportsAll4545", array).then(Response => {        
           this.List = this.$store.getters.pagosReports;
           this.json_data = this.$store.getters.pagosReports.items;       
       });
