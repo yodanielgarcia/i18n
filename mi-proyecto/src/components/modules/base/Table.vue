@@ -17,7 +17,7 @@
     </b-table>
     <b-row>
       <b-col md="6" class="my-1">
-        <!-- <b-pagination :total-rows="this.DataItems.length" :per-page="perPage" v-model="currentPage" class="my-0" /> -->
+        <b-pagination :total-rows="this.DataItems.length" :per-page="perPage" v-model="currentPage" class="my-0" />
       </b-col>
       <b-col md="6" class="my-1">
         <b-form-group horizontal label="Registro por página" class="mb-0">
@@ -33,8 +33,8 @@
 export default {
   name: 'tableDinamic',
   props: {
-    items: { required: false },
-    fields: { required: false },
+    items: { required: true },
+    fields: { required: true },
   },
   data () {
     return {
@@ -62,8 +62,6 @@ export default {
     console.log( this.items)
     this.DataItems = this.items
     this.DataFields = this.fields
-    //this.DataMethodsTable = this.methodsTable
-    //this.validateButton()
   },
   methods: {
     defaultJson(){

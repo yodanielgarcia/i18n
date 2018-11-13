@@ -42,13 +42,11 @@ export default {
       }
     }
   },
-  mounted () {
-    let self = this
+  mounted () {    
     this.$store.dispatch(this.allDispatch).then((response) => {
-      self.dataLoad = self.$store.getters
-      console.log('dada',self.dataLoad)
-      self.recarga =  self.$store.getters
-      self.loading = false
+      this.dataLoad = this.$store.getters[this.mapState]
+      this.recarga =  this.$store.getters[this.mapState]
+      this.loading = false
     }).catch((error) => {
       // eslint-disable-next-line
       console.error(error)

@@ -1,10 +1,15 @@
 const PAGOS_REPORTS_ALL = (state, pagosReports) => {
-      console.log(pagosReports)
-      state.pagosReports = pagosReports.data
-      state.status = 'success'
-    
+
+  if (pagosReports.code === 1) {
+    state.pagosReports = pagosReports.data
+    state.status = 'success'
+  } else {
+    alert(pagosReports.message)
+    state.status = 'error'
   }
 
-  export default {
-    PAGOS_REPORTS_ALL
-  }
+}
+
+export default {
+  PAGOS_REPORTS_ALL
+}

@@ -85,10 +85,10 @@ export default {
         fechafinRVD: this.fechaFinRVD + " 23:59:00"
       };
       let mostrarTRVD= ''
-      // this.$store.dispatch("pagosReportsAll", array).then(Response => {      
-      // this.List= this.$store.getters.pagosReports 
+       this.$store.dispatch("pagosReportsAll", array).then(Response => {      
+       this.List= this.$store.getters.pagosReports 
        this.mostrarTRVD = true
-      // });
+       });
     }
   }
 };
