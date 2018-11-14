@@ -29,14 +29,13 @@
 </b-container>
 </template>
 <script>
-
 export default {
-  name: 'tableDinamic',
+  name: "tableDinamic",
   props: {
     items: { required: true },
-    fields: { required: true },
+    fields: { required: true }
   },
-  data () {
+  data() {
     return {
       currentData: {},
       currentPage: 1,
@@ -44,38 +43,38 @@ export default {
       pageOptions: [5, 10, 15],
       sortBy: null,
       sortDesc: false,
-      sortDirection: 'asc',
+      sortDirection: "asc",
       filter: null,
       DataItemsVal: 0,
       DataItems: [],
       DataFields: {},
-      DataMethodsTable: '',
+      DataMethodsTable: "",
       seen: false
-    }
+    };
   },
   computed: {
-    sortOptions () {
-      return { text: 'Name', value: 'name' }
+    sortOptions() {
+      return { text: "Name", value: "name" };
     }
   },
-  mounted () {
-    console.log( this.items)
-    this.DataItems = this.items
-    this.DataFields = this.fields
+  mounted() {
+    console.log(this.items);
+    this.DataItems = this.items;
+    this.DataFields = this.fields;
   },
   methods: {
-    defaultJson(){
-      return {'Id': 'id','Nombre': 'name'}
+    defaultJson() {
+      return { Id: "id", Nombre: "name" };
     },
-    onFiltered (filteredItems) {
-      this.totalRows = filteredItems.length
-      this.currentPage = 1
+    onFiltered(filteredItems) {
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
     },
-    actionButton (id, index) {
-      let obj = {id: id}
-      let json = JSON.stringify(obj)
-      this.$store.dispatch(this.DataMethodsTable[index], json)
+    actionButton(id, index) {
+      let obj = { id: id };
+      let json = JSON.stringify(obj);
+      this.$store.dispatch(this.DataMethodsTable[index], json);
     }
   }
-}
+};
 </script>

@@ -8,52 +8,53 @@
   </div>
 </template>
 <script>
-
-import tableDinamic from "./Table"
+import tableDinamic from "./Table";
 // import { mapGetters } from 'vuex'
 export default {
-  name: 'List',
+  name: "List",
   components: {
     tableDinamic
   },
   props: {
     mapState: { required: true },
-    allDispatch: { required: true },
+    allDispatch: { required: true }
   },
-  data () {
+  data() {
     return {
       loading: true,
       form: {},
       dataLoad: {}
-    }
+    };
   },
-  watch:{
-    dataLoad(newvalue){
-      console.log('entro')
+  watch: {
+    dataLoad(newvalue) {
+      console.log("entro");
     }
   },
   computed: {
-    recarga:{
-      get(){
-        return this.dataLoad
+    recarga: {
+      get() {
+        return this.dataLoad;
       },
-      set(newvalue){
-        this.dataLoad = newvalue
+      set(newvalue) {
+        this.dataLoad = newvalue;
       }
     }
   },
-  mounted () {    
-    this.$store.dispatch(this.allDispatch).then((response) => {
-      this.dataLoad = this.$store.getters[this.mapState]
-      this.recarga =  this.$store.getters[this.mapState]
-      this.loading = false
-    }).catch((error) => {
-      // eslint-disable-next-line
-      console.error(error)
-    })
+  mounted() {
+    this.$store
+      .dispatch(this.allDispatch)
+      .then(response => {
+        this.dataLoad = this.$store.getters[this.mapState];
+        console.log("list", this.$store.getters);
+        this.recarga = this.$store.getters[this.mapState];
+        this.loading = false;
+      })
+      .catch(error => {
+        // eslint-disable-next-line
+        console.error(error);
+      });
   },
-  methods: {
-    
-  }
-}
+  methods: {}
+};
 </script>
