@@ -7,6 +7,8 @@ import App from './App.vue'
 import Datetime from 'vue-datetime'
 import VueSweetalert2 from 'vue-sweetalert2';
 import store from './store'
+import router from './router'
+import VueRouter from 'vue-router';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -17,6 +19,7 @@ Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios)
 Vue.use(Datetime)
 Vue.use(VueSweetalert2);
+Vue.use(VueRouter);
 Vue.prototype.$axios = axios
 
 // Ready translated locale messages
@@ -36,6 +39,7 @@ const app = new Vue({
   axios,
   VueAxios,
   store,
+  router,
   data: {
     products: [
       'Boots',
